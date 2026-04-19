@@ -1,0 +1,11 @@
+This is basically the logic :
+
+1.Create 2 class, 1 for to-dos and 1 for the custom to-do group folder called projects
+2.the nav will have home, today, upcoming, overdue, completed, projects button to go to sort to-dos
+3.to-dos class have get and setter, then a function that put it to its respective group folder and array
+4.create few default projects
+5.display it on navbar, make it clickable, if clicked it will show to-dos in that project group
+6.create few default to-dos 
+7.put the to-dos in one main array(home), then today/upcoming/overdue/completed are not array, they are basically sorting option.
+8.display home 
+9.use pubsub logic to display todos, the ui will subscribe to todos and projects to update the display

@@ -8,7 +8,36 @@
 </head>
 
 <body>
-  
+  <div class="buttons">
+    <button id="addButton" command="show-modal" commandfor="inputToDo">Add to do</button>
+
+  </div>
+  <div class="toDosContainer">
+    <!-- <div class="todo" data-id="1232">
+      <div class="todoContent">
+        <h1>title</h1>
+        <p>description</p>
+        <span>priority</span>
+      </div>
+      <button class="delButton">Delete task</button>
+    </div> -->
+  </div>
+
+  <dialog id="inputToDo">
+    <label for="tdTitle">Title:</label><br>
+    <input type="text" id="tdTitle" name="tdTitle"><br>
+    <label for="tdDesc">Description:</label><br>
+    <input type="text" id="tdDesc" name="tdDesc"><br><br>
+
+    <label for="tdPriority">Priority:</label>
+    <select id="tdPriority" name="tdPriority">
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>      
+    </select>
+    <button commandfor="inputToDo" command="close">Cancel</button>
+    <button id="tdAddTask">Add Task</button>
+  </dialog>
 </body>
 
 </html>

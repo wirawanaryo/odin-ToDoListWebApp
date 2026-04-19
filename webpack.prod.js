@@ -3,7 +3,7 @@ import common from "./webpack.common.js";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 
-export default {
+export default merge(common,{
   mode: "production",
   plugins: [    
     new MiniCssExtractPlugin({
@@ -21,4 +21,4 @@ export default {
       }      
     ]
   }
-};
+});

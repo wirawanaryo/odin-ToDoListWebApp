@@ -1,7 +1,7 @@
 import { merge } from "webpack-merge";
 import common from "./webpack.common.js";
 
-export default {
+export default merge(common,{
   mode: "development",
   devServer: {
     static: "./dist",
@@ -16,4 +16,4 @@ export default {
       }
     ],
   },
-};
+});
