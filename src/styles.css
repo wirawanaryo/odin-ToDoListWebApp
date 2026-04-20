@@ -17,10 +17,18 @@ body{
   width: 40vw;
   background-color: rgb(202, 202, 202);
 }
-.todo{
-  background-color: aliceblue;
+.todo{  
   margin: 1rem;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
+}
+.High{
+  background-color: rgb(255, 224, 224);
+}
+.Medium{
+  background-color: rgb(255, 254, 224);
+}
+.Low{
+  background-color: rgb(224, 255, 224);
 }

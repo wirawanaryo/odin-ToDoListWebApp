@@ -6,6 +6,7 @@ import * as storage from './assets/modules/storage.js';
 import * as ui from './assets/modules/ui.js'
 
 state.loadLocalToDos();
-ui.renderToDos();
+ui.renderToDos(state.getCurToDos());
 ui.initButtons();
 
+console.log(state.getCurToDos());
