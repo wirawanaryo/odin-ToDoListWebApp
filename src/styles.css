@@ -12,9 +12,18 @@ body{
   justify-content: center;
   gap: 20px;
 }
+.mainUI{
+  display: flex;
+  gap: 1vw;
+}
 .toDosContainer{
   height: 80vh;
   width: 40vw;
+  background-color: rgb(202, 202, 202);
+}
+.nav{
+  height: 80vh;
+  width: 10vw;
   background-color: rgb(202, 202, 202);
 }
 .todo{  

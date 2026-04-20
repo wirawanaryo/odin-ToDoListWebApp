@@ -8,8 +8,8 @@ const inputDialog = document.getElementById('inputToDo');
 const inputForm = document.getElementById('inputForm');
 
 
-function createToDo(title, desc, date, priority) {
-  const newToDo = new todo.toDo(title, desc, date, priority);
+function createToDo(title, desc, date, priority, project) {
+  const newToDo = new todo.toDo(title, desc, date, priority, project);
   state.addToDo(newToDo);
 };
 
@@ -24,7 +24,8 @@ function renderToDos(toDosArr) {
         <h1>${newToDo.title}</h1>
         <p>${newToDo.desc}</p>
         <span>Priority: ${newToDo.priority}</span><br>    
-        <span>Deadline: ${newToDo.date}</span>     
+        <span>Deadline: ${newToDo.date}</span><br>
+        <span>Project: ${newToDo.project}</span>       
       </div>
       <button class="delButton">Delete task</button>
     </div>
@@ -45,8 +46,9 @@ function initButtons() {
     const descVal = document.getElementById('tdDesc').value;
     const priorityVal = document.getElementById('tdPriority').value;
     const dateVal = document.getElementById('tdDate').value;
+    const projectVal = document.getElementById('tdProject').value;
 
-    createToDo(titleVal, descVal, dateVal, priorityVal);
+    createToDo(titleVal, descVal, dateVal, priorityVal, projectVal);
     inputDialog.close();
     inputForm.reset();
     renderToDos(state.getCurToDos());

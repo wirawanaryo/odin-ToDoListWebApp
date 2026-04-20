@@ -12,15 +12,19 @@
     <button id="addButton" command="show-modal" commandfor="inputToDo">Add to do</button>
 
   </div>
-  <div class="toDosContainer">
-    <!-- <div class="todo" data-id="1232">
-      <div class="todoContent">
-        <h1>title</h1>
-        <p>description</p>
-        <span>priority</span>
-      </div>
-      <button class="delButton">Delete task</button>
-    </div> -->
+  <div class="mainUI">
+    <div class="nav">      
+    </div>
+    <div class="toDosContainer">
+      <!-- <div class="todo" data-id="1232">
+        <div class="todoContent">
+          <h1>title</h1>
+          <p>description</p>
+          <span>priority</span>
+        </div>
+        <button class="delButton">Delete task</button>
+      </div> -->
+    </div>    
   </div>
 
   <dialog id="inputToDo">
@@ -29,6 +33,10 @@
       <input type="text" id="tdTitle" name="tdTitle" required><br>
       <label for="tdDesc">Description:</label><br>
       <input type="text" id="tdDesc" name="tdDesc"><br>
+
+      <label for="tdProject">Project:</label><br>
+      <input type="text" id="tdProject" name="tdProject"><br>
+      
       <label for="tdDate">Deadline:</label><br>
       <input type="date" id="tdDate" name="tdDate"><br><br>
 
