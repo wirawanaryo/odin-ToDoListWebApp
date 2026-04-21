@@ -36,4 +36,4 @@ function initProjects() {
   }
 };
 
-export {getProjects, addProject, delProject, initProjects};
+export {project, getProjects, addProject, delProject, initProjects};

@@ -9,7 +9,8 @@ const inputDialog = document.getElementById('inputToDo');
 const inputForm = document.getElementById('inputForm');
 const pjContainer = document.querySelector('.nav');
 const addProjectButton = document.getElementById('pjAddProject');
-
+const projectForm = document.getElementById('projectForm');
+const projectDialog = document.getElementById('inputProject');
 
 function createToDo(title, desc, date, priority, project) {
   const newToDo = new todo.toDo(title, desc, date, priority, project);
@@ -37,7 +38,7 @@ function renderToDos(toDosArr) {
     const wrapper = document.createElement('div');
     wrapper.innerHTML = newContainer;
     tdContainer.appendChild(wrapper.firstElementChild);
-  });  
+  });
 
   initDelButtons();
 }
@@ -56,10 +57,23 @@ function initButtons() {
     inputForm.reset();
     renderToDos(state.getCurToDos());
     console.log(state.getCurToDos());
-  });  
+  });
+
+  projectForm.addEventListener('submit', () => {
+    event.preventDefault();
+    const projectTitle = document.getElementById('pjTitle').value;
+    const projectColor = document.getElementById('pjColor').value;
+
+    const newProject = new project.project(projectTitle, projectColor);
+    project.addProject(newProject);
+    projectDialog.close();
+    projectForm.reset();
+    renderProjects(project.getProjects());
+    console.log(project.getProjects());
+  });
 };
 
-function initDelButtons(){
+function initDelButtons() {
   const delTaskButtons = document.querySelectorAll('.delButton');
   delTaskButtons.forEach(delTaskButton => {
     delTaskButton.addEventListener('click', () => {
@@ -67,14 +81,14 @@ function initDelButtons(){
       state.delToDo(targetToDo.dataset.id);
       renderToDos(state.getCurToDos());
       console.log("delpressed!");
-    });    
-  })  
+    });
+  })
 }
 
-function initDelProjectButtons(){
+function initDelProjectButtons() {
   const delProjectButtons = document.querySelectorAll('.delProject');
-  delProjectButtons.forEach(delProjectButton=>{
-    delProjectButton.addEventListener('click', ()=>{
+  delProjectButtons.forEach(delProjectButton => {
+    delProjectButton.addEventListener('click', () => {
       const targetProject = event.target.closest('.project');
       project.delProject(targetProject.dataset.idpj);
       renderProjects(project.getProjects());
@@ -88,12 +102,14 @@ function renderProjects(projectsArr) {
   let projects = projectsArr;
 
   projects.forEach((newProject) => {
+    const deleteBtn = newProject.name === 'Home' ? '' : `<button class="delProject">🗑</button>`;
+    
     const newContainer = `
       <div class="project" data-idpj="${newProject.id}">
         <h3 class="nameProject">${newProject.name}</h3>
         <div>
           <button class="openProject">👁</button>
-          <button class="delProject">🗑</button>
+          ${deleteBtn}
         </div>
       </div>
     `;
@@ -106,4 +122,4 @@ function renderProjects(projectsArr) {
   initDelProjectButtons();
 }
 
-export{ initButtons, renderToDos, renderProjects };
+export { initButtons, renderToDos, renderProjects };
