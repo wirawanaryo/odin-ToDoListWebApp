@@ -10,10 +10,13 @@
 <body>
   <div class="buttons">
     <button id="addButton" command="show-modal" commandfor="inputToDo">Add to do</button>
-
+    <button id="addProject" command="show-modal" commandfor="inputProject">Add Project</button>
   </div>
   <div class="mainUI">
     <div class="nav">      
+      <!-- <div class="project" data-idPj="1234">
+        <button class="openProject">Project Name</button>
+      </div> -->      
     </div>
     <div class="toDosContainer">
       <!-- <div class="todo" data-id="1232">
@@ -48,8 +51,18 @@
       </select><br>           
     </form>
     <button id="tdAddTask" type="submit" form="inputForm">Add Task</button> 
-    <button commandfor="inputToDo" command="close">Cancel</button>
-    
+    <button commandfor="inputToDo" command="close">Cancel</button>    
+  </dialog>
+
+  <dialog id="inputProject">
+    <form id="projectForm" method="dialog">
+      <label for="pjTitle">Title:</label><br>
+      <input type="text" id="pjTitle" name="pjTitle" required><br>
+      <label for="pjColor">Color:</label><br>
+      <input type="text" id="pjColor" name="pjColor"><br>
+    </form><br>
+    <button id="pjAddProject" type="submit" form="projectForm">Add Project</button> 
+    <button commandfor="inputProject" command="close">Cancel</button>    
   </dialog>
 </body>
 

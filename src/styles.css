@@ -32,6 +32,17 @@ body{
   display: flex;
   justify-content: space-between;
 }
+.project{
+  display: flex;  
+  justify-content: space-between;
+  margin-bottom: 2vh;
+  background-color: white;
+  padding:0.5vh 0.5vw 0.5vh 0.5vw;
+}
+.nav{  
+  padding: 4vh 0.5vw 1vh 0.5vw;
+  
+}
 .High{
   background-color: rgb(255, 224, 224);
 }

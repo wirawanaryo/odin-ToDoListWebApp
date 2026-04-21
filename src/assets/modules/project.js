@@ -14,7 +14,7 @@ function getProjects() {
 }
 
 function addProject(newProject){  
-  const newProjects = [...project, newProject];
+  const newProjects = [...projects, newProject];
   storage.saveToLocalStorage(newProjects, 'localProjects'); 
   projects = newProjects; 
 }

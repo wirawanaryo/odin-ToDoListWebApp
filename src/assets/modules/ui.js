@@ -1,11 +1,14 @@
 import * as todo from './todo.js';
 import * as state from './state.js';
+import * as project from './project.js';
 
 
 const addTaskButton = document.getElementById('tdAddTask');
 const tdContainer = document.querySelector('.toDosContainer');
 const inputDialog = document.getElementById('inputToDo');
 const inputForm = document.getElementById('inputForm');
+const pjContainer = document.querySelector('.nav');
+const addProjectButton = document.getElementById('pjAddProject');
 
 
 function createToDo(title, desc, date, priority, project) {
@@ -65,7 +68,42 @@ function initDelButtons(){
       renderToDos(state.getCurToDos());
       console.log("delpressed!");
     });    
-  })
+  })  
 }
 
-export { initButtons, renderToDos };
+function initDelProjectButtons(){
+  const delProjectButtons = document.querySelectorAll('.delProject');
+  delProjectButtons.forEach(delProjectButton=>{
+    delProjectButton.addEventListener('click', ()=>{
+      const targetProject = event.target.closest('.project');
+      project.delProject(targetProject.dataset.idpj);
+      renderProjects(project.getProjects());
+      // console.log(targetProject.dataset.idpj);      
+    });
+  });
+}
+
+function renderProjects(projectsArr) {
+  pjContainer.innerHTML = '';
+  let projects = projectsArr;
+
+  projects.forEach((newProject) => {
+    const newContainer = `
+      <div class="project" data-idpj="${newProject.id}">
+        <h3 class="nameProject">${newProject.name}</h3>
+        <div>
+          <button class="openProject">👁</button>
+          <button class="delProject">🗑</button>
+        </div>
+      </div>
+    `;
+
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = newContainer;
+    pjContainer.appendChild(wrapper.firstElementChild);
+  });
+
+  initDelProjectButtons();
+}
+
+export{ initButtons, renderToDos, renderProjects };
