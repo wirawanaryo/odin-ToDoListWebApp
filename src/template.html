@@ -18,12 +18,17 @@
     </div>
     <div class="toDosContainer">
       <!-- <div class="todo" data-id="1232">
-        <div class="todoContent">
+        <div class="todoHeader">
           <h1>title</h1>
+          <button class="delButton">Delete</button>
+          <button class="editButton">Edit</button>
+        </div>
+        <div class="todoContent">          
           <p>description</p>
           <span>priority</span>
-        </div>
-        <button class="delButton">Delete task</button>
+          <span>Deadline</span>
+          <span>Project</span>
+        </div>        
       </div> -->
     </div>
   </div>
@@ -65,6 +70,34 @@
     </form><br>
     <button id="pjAddProject" type="submit" form="projectForm">Add Project</button>
     <button commandfor="inputProject" command="close">Cancel</button>
+  </dialog>
+
+  <dialog id="reInputToDo">
+    <form id="reInputForm" method="dialog">
+      <label for="tdTitle">Title:</label><br>
+      <input type="text" id="tdTitle" name="tdTitle" required><br>
+      <label for="tdDesc">Description:</label><br>
+      <input type="text" id="tdDesc" name="tdDesc"><br>
+
+
+      <label for="tdProject">Project:</label>      
+      <select id="tdProject" name="tdProject">  
+        <option value="Home">Home</option>      
+      </select><br>
+
+
+      <label for="tdDate">Deadline:</label><br>
+      <input type="date" id="tdDate" name="tdDate"><br>
+
+      <label for="tdPriority">Priority:</label>
+      <select id="tdPriority" name="tdPriority">
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select><br>
+    </form>
+    <!-- <button id="tdreInput" type="submit" form="reInputForm">Save Edit</button> -->
+    <button commandfor="reInputToDo" command="close">Cancel</button>
   </dialog>
 </body>
 

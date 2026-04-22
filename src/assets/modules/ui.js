@@ -30,14 +30,19 @@ function renderToDos(toDosArr) {
   toDos.forEach((newToDo) => {
     const newContainer = `
     <div class="todo ${newToDo.priority}" data-id="${newToDo.id}">
-      <div class="todoContent">
-        <h1>${newToDo.title}</h1>
+      <div class="todoHeader">
+          <h1>${newToDo.title}</h1>
+          <div class="todosButtons">
+            <button class="delButton">Delete</button>
+            <button class="editButton" command="show-modal" commandfor="reInputTodo">Edit</button>
+          </div>
+      </div>
+      <div class="todoContent">        
         <p>${newToDo.desc}</p>
         <span>Priority: ${newToDo.priority}</span><br>    
         <span>Deadline: ${newToDo.date}</span><br>
         <span>Project: ${newToDo.project}</span>       
-      </div>
-      <button class="delButton">Delete task</button>
+      </div>      
     </div>
     `;
 
@@ -47,6 +52,7 @@ function renderToDos(toDosArr) {
   });
 
   initDelButtons();
+  initEditToDoButtons();
 }
 
 const showAllButton = document.getElementById('showAllToDos');
@@ -169,6 +175,19 @@ function initOpenProjectButtons() {
       renderToDos(filtered);
       curView = targetName;
       console.log(`current view: ${curView}`);
+    });
+  });
+}
+
+function initEditToDoButtons() {
+  let todoID;
+  const reInputDialog = document.getElementById('reInputToDo')
+  const editButtons = document.querySelectorAll('.editButton');
+  editButtons.forEach(editButton => {
+    editButton.addEventListener('click', ()=>{
+      todoID = event.target.closest('.todo').dataset.id;
+      reInputDialog.showModal();
+      console.log(todoID);
     });
   });
 }
