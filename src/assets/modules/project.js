@@ -5,7 +5,12 @@ class project {
   constructor(name, color) {  
     this.id = crypto.randomUUID().slice(0, 4);  
     this.name = name;
-    this.color= color;
+    this.color= color;    
+    this.protected = false;
+  }
+
+  changeToDefault(){
+    this.protected = true;
   }
 }
 
@@ -30,6 +35,7 @@ function initProjects() {
   
   if (loadedProjects.length === 0) {
     const home = new project('Home', 'blue')
+    home.changeToDefault();
     addProject(home);
   } else {
     projects = loadedProjects;

@@ -44,6 +44,7 @@ function renderToDos(toDosArr) {
 }
 
 function initButtons() {
+  //add todo button on form
   inputForm.addEventListener('submit', () => {
     event.preventDefault();
     const titleVal = document.getElementById('tdTitle').value;
@@ -59,6 +60,7 @@ function initButtons() {
     console.log(state.getCurToDos());
   });
 
+  //add project button on form
   projectForm.addEventListener('submit', () => {
     event.preventDefault();
     const projectTitle = document.getElementById('pjTitle').value;
@@ -70,6 +72,7 @@ function initButtons() {
     projectForm.reset();
     renderProjects(project.getProjects());
     console.log(project.getProjects());
+    updateProjectSelector();
   });
 };
 
@@ -102,8 +105,8 @@ function renderProjects(projectsArr) {
   let projects = projectsArr;
 
   projects.forEach((newProject) => {
-    const deleteBtn = newProject.name === 'Home' ? '' : `<button class="delProject">🗑</button>`;
-    
+    const deleteBtn = newProject.protected === true ? '' : `<button class="delProject">🗑</button>`;
+
     const newContainer = `
       <div class="project" data-idpj="${newProject.id}">
         <h3 class="nameProject">${newProject.name}</h3>
@@ -122,4 +125,17 @@ function renderProjects(projectsArr) {
   initDelProjectButtons();
 }
 
-export { initButtons, renderToDos, renderProjects };
+const projectSelector = document.getElementById('tdProject');
+function updateProjectSelector() {
+  projectSelector.replaceChildren();
+  const projects = project.getProjects();
+
+  projects.forEach((newProject) => {
+    const newOption = `<option value="${newProject.name}">${newProject.name}</option>`;
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = newOption;
+    projectSelector.appendChild(wrapper.firstElementChild);
+  });
+}
+
+export { initButtons, renderToDos, renderProjects, updateProjectSelector };

@@ -12,7 +12,7 @@ project.initProjects();
 ui.renderProjects(project.getProjects());
 
 ui.initButtons();
-
+ui.updateProjectSelector();
 
 
 

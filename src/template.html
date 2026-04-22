@@ -13,10 +13,10 @@
     <button id="addProject" command="show-modal" commandfor="inputProject">Add Project</button>
   </div>
   <div class="mainUI">
-    <div class="nav">      
+    <div class="nav">
       <!-- <div class="project" data-idPj="1234">
         <button class="openProject">Project Name</button>
-      </div> -->      
+      </div> -->
     </div>
     <div class="toDosContainer">
       <!-- <div class="todo" data-id="1232">
@@ -27,7 +27,7 @@
         </div>
         <button class="delButton">Delete task</button>
       </div> -->
-    </div>    
+    </div>
   </div>
 
   <dialog id="inputToDo">
@@ -37,21 +37,25 @@
       <label for="tdDesc">Description:</label><br>
       <input type="text" id="tdDesc" name="tdDesc"><br>
 
-      <label for="tdProject">Project:</label><br>
-      <input type="text" id="tdProject" name="tdProject"><br>
-      
-      <label for="tdDate">Deadline:</label><br>
-      <input type="date" id="tdDate" name="tdDate"><br><br>
 
+      <label for="tdProject">Project:</label>      
+      <select id="tdProject" name="tdProject">  
+        <option value="Home">Home</option>      
+      </select><br>
+
+
+      <label for="tdDate">Deadline:</label><br>
+      <input type="date" id="tdDate" name="tdDate"><br>
+      
       <label for="tdPriority">Priority:</label>
       <select id="tdPriority" name="tdPriority">
         <option value="High">High</option>
         <option value="Medium">Medium</option>
-        <option value="Low">Low</option>      
-      </select><br>           
+        <option value="Low">Low</option>
+      </select><br>
     </form>
-    <button id="tdAddTask" type="submit" form="inputForm">Add Task</button> 
-    <button commandfor="inputToDo" command="close">Cancel</button>    
+    <button id="tdAddTask" type="submit" form="inputForm">Add Task</button>
+    <button commandfor="inputToDo" command="close">Cancel</button>
   </dialog>
 
   <dialog id="inputProject">
@@ -61,8 +65,8 @@
       <label for="pjColor">Color:</label><br>
       <input type="text" id="pjColor" name="pjColor"><br>
     </form><br>
-    <button id="pjAddProject" type="submit" form="projectForm">Add Project</button> 
-    <button commandfor="inputProject" command="close">Cancel</button>    
+    <button id="pjAddProject" type="submit" form="projectForm">Add Project</button>
+    <button commandfor="inputProject" command="close">Cancel</button>
   </dialog>
 </body>
 
