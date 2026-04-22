@@ -43,6 +43,7 @@ function renderToDos(toDosArr) {
   initDelButtons();
 }
 
+const showAllButton = document.getElementById('showAllToDos');
 function initButtons() {
   //add todo button on form
   inputForm.addEventListener('submit', () => {
@@ -73,6 +74,12 @@ function initButtons() {
     renderProjects(project.getProjects());
     console.log(project.getProjects());
     updateProjectSelector();
+  });
+
+  //show all todos
+  showAllButton.addEventListener('click',()=>{
+    renderToDos(state.getCurToDos());
+    console.log('all todos are shown');
   });
 };
 
@@ -123,6 +130,7 @@ function renderProjects(projectsArr) {
   });
 
   initDelProjectButtons();
+  initOpenProjectButtons();
 }
 
 const projectSelector = document.getElementById('tdProject');
@@ -135,6 +143,21 @@ function updateProjectSelector() {
     const wrapper = document.createElement('div');
     wrapper.innerHTML = newOption;
     projectSelector.appendChild(wrapper.firstElementChild);
+  });
+}
+
+
+function initOpenProjectButtons() {
+  const openProjectButtons = document.querySelectorAll('.openProject');
+  openProjectButtons.forEach(button=>{
+    button.addEventListener('click', ()=>{
+      const targetProject = event.target.closest('.project');
+      const targetName = targetProject.querySelector('.nameProject').textContent;   
+      let toDos = state.getCurToDos();
+      const filtered = toDos.filter(toDo => toDo.project === targetName)
+      renderToDos(filtered);
+      // console.log(targetName);
+    });
   });
 }
 
