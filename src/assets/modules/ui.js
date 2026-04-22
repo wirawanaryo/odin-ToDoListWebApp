@@ -70,7 +70,7 @@ function initButtons() {
     inputDialog.close();
     inputForm.reset();
 
-    curView=projectVal;
+    curView = projectVal;
     renderByCurView();
     // renderToDos(state.getCurToDos());    
   });
@@ -91,7 +91,7 @@ function initButtons() {
   });
 
   //show all todos
-  showAllButton.addEventListener('click',()=>{
+  showAllButton.addEventListener('click', () => {
     renderToDos(state.getCurToDos());
     curView = 'all';
     console.log(`current view: ${curView}`);
@@ -104,7 +104,7 @@ function initDelButtons() {
     delTaskButton.addEventListener('click', () => {
       const targetToDo = event.target.closest('.todo');
       state.delToDo(targetToDo.dataset.id);
-      
+
       renderByCurView();
       // console.log("delpressed!");
     });
@@ -150,27 +150,32 @@ function renderProjects(projectsArr) {
   initOpenProjectButtons();
 }
 
-const projectSelector = document.getElementById('tdProject');
-function updateProjectSelector() {
-  projectSelector.replaceChildren();
-  const projects = project.getProjects();
 
-  projects.forEach((newProject) => {
-    const newOption = `<option value="${newProject.name}">${newProject.name}</option>`;
-    const wrapper = document.createElement('div');
-    wrapper.innerHTML = newOption;
-    projectSelector.appendChild(wrapper.firstElementChild);
-  });
+const projectSelector1 = document.getElementById('tdProject');
+const projectSelector2 = document.getElementById('tdProject2')
+const projectSelectors = [projectSelector1, projectSelector2];
+function updateProjectSelector() {
+  projectSelectors.forEach(projectSelector => {
+    projectSelector.replaceChildren();
+    const projects = project.getProjects();
+
+    projects.forEach((newProject) => {
+      const newOption = `<option value="${newProject.name}">${newProject.name}</option>`;
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = newOption;
+      projectSelector.appendChild(wrapper.firstElementChild);
+    });
+  });  
 }
 
 
 function initOpenProjectButtons() {
   const openProjectButtons = document.querySelectorAll('.openProject');
-  openProjectButtons.forEach(button=>{
-    button.addEventListener('click', ()=>{
+  openProjectButtons.forEach(button => {
+    button.addEventListener('click', () => {
       const targetProject = event.target.closest('.project');
-      const targetName = targetProject.querySelector('.nameProject').textContent;   
-      let toDos = state.getCurToDos();      
+      const targetName = targetProject.querySelector('.nameProject').textContent;
+      let toDos = state.getCurToDos();
       const filtered = state.filterTodos('project', targetName);
       renderToDos(filtered);
       curView = targetName;
@@ -184,12 +189,33 @@ function initEditToDoButtons() {
   const reInputDialog = document.getElementById('reInputToDo')
   const editButtons = document.querySelectorAll('.editButton');
   editButtons.forEach(editButton => {
-    editButton.addEventListener('click', ()=>{
+    editButton.addEventListener('click', () => {
       todoID = event.target.closest('.todo').dataset.id;
       reInputDialog.showModal();
       console.log(todoID);
     });
   });
+
+  const reInputForm = document.getElementById('reInputForm');
+  reInputForm.addEventListener('submit', () => {
+    event.preventDefault();
+    
+    const titleVal = document.getElementById('tdTitle2').value;
+    const descVal = document.getElementById('tdDesc2').value;
+    const dateVal = document.getElementById('tdDate2').value;
+    const priorityVal = document.getElementById('tdPriority2').value;    
+    const projectVal = document.getElementById('tdProject2').value;
+
+    console.log(todoID);
+
+    // state.modifyToDo(todoID,titleVal,descVal,dateVal,priorityVal,projectVal);  
+    reInputDialog.close();
+    // reInputForm.reset();
+    // curView = projectVal;
+    // renderByCurView();
+        
+  });
+
 }
 
 export { initButtons, renderToDos, renderProjects, updateProjectSelector };

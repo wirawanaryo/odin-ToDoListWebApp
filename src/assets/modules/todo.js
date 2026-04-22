@@ -9,6 +9,12 @@ class toDo {
     this.priority = priority;
     this.project = project;
   }   
+
+  changeTitle(newTitle){this.title = newTitle;}
+  changeDesc(newDesc){this.desc = newDesc;}
+  changeDate(newDate){this.date = newDate;}
+  changePriority(newPriority){this.priority = newPriority;}
+  changeProject(newProject){this.project = newProject;}
 }
 
 function createToDo(title, desc, date, priority, project) {
