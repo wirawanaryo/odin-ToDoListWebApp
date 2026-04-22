@@ -28,4 +28,8 @@ function getCurToDos(){
   return toDos;
 }
 
-export {addToDo, delToDo, loadLocalToDos, getCurToDos};
+function filterTodos(property, condition) {
+  const filtered = toDos.filter(toDo => toDo[property] === condition);
+  return filtered;
+}
+export {addToDo, delToDo, loadLocalToDos, getCurToDos, filterTodos};

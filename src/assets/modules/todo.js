@@ -1,3 +1,5 @@
+import * as state from './state.js';
+
 class toDo {
   constructor(title, desc, date, priority, project) {
     this.id = crypto.randomUUID().slice(0, 4);
@@ -9,4 +11,9 @@ class toDo {
   }   
 }
 
-export {toDo};
+function createToDo(title, desc, date, priority, project) {
+  const newToDo = new toDo(title, desc, date, priority, project);
+  state.addToDo(newToDo);
+};
+
+export {toDo, createToDo};

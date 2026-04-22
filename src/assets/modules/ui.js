@@ -12,10 +12,16 @@ const addProjectButton = document.getElementById('pjAddProject');
 const projectForm = document.getElementById('projectForm');
 const projectDialog = document.getElementById('inputProject');
 
-function createToDo(title, desc, date, priority, project) {
-  const newToDo = new todo.toDo(title, desc, date, priority, project);
-  state.addToDo(newToDo);
-};
+let curView = 'all';
+
+function renderByCurView() {
+  if (curView == 'all') {
+    renderToDos(state.getCurToDos());
+  } else {
+    const filtered = state.filterTodos('project', curView);
+    renderToDos(filtered);
+  }
+}
 
 function renderToDos(toDosArr) {
   tdContainer.innerHTML = '';
@@ -54,11 +60,13 @@ function initButtons() {
     const dateVal = document.getElementById('tdDate').value;
     const projectVal = document.getElementById('tdProject').value;
 
-    createToDo(titleVal, descVal, dateVal, priorityVal, projectVal);
+    todo.createToDo(titleVal, descVal, dateVal, priorityVal, projectVal);
     inputDialog.close();
     inputForm.reset();
-    renderToDos(state.getCurToDos());
-    console.log(state.getCurToDos());
+
+    curView=projectVal;
+    renderByCurView();
+    // renderToDos(state.getCurToDos());    
   });
 
   //add project button on form
@@ -79,7 +87,8 @@ function initButtons() {
   //show all todos
   showAllButton.addEventListener('click',()=>{
     renderToDos(state.getCurToDos());
-    console.log('all todos are shown');
+    curView = 'all';
+    console.log(`current view: ${curView}`);
   });
 };
 
@@ -89,8 +98,9 @@ function initDelButtons() {
     delTaskButton.addEventListener('click', () => {
       const targetToDo = event.target.closest('.todo');
       state.delToDo(targetToDo.dataset.id);
-      renderToDos(state.getCurToDos());
-      console.log("delpressed!");
+      
+      renderByCurView();
+      // console.log("delpressed!");
     });
   })
 }
@@ -102,6 +112,7 @@ function initDelProjectButtons() {
       const targetProject = event.target.closest('.project');
       project.delProject(targetProject.dataset.idpj);
       renderProjects(project.getProjects());
+      updateProjectSelector();
       // console.log(targetProject.dataset.idpj);      
     });
   });
@@ -153,10 +164,11 @@ function initOpenProjectButtons() {
     button.addEventListener('click', ()=>{
       const targetProject = event.target.closest('.project');
       const targetName = targetProject.querySelector('.nameProject').textContent;   
-      let toDos = state.getCurToDos();
-      const filtered = toDos.filter(toDo => toDo.project === targetName)
+      let toDos = state.getCurToDos();      
+      const filtered = state.filterTodos('project', targetName);
       renderToDos(filtered);
-      // console.log(targetName);
+      curView = targetName;
+      console.log(`current view: ${curView}`);
     });
   });
 }

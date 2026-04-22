@@ -20,6 +20,7 @@ body{
   height: 80vh;
   width: 40vw;
   background-color: rgb(202, 202, 202);
+  overflow-y: auto;
 }
 .nav{
   height: 80vh;
