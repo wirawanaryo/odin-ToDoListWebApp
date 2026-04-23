@@ -207,12 +207,12 @@ function initEditToDoButtons() {
     const projectVal = document.getElementById('tdProject2').value;
 
     console.log(todoID);
-
-    // state.modifyToDo(todoID,titleVal,descVal,dateVal,priorityVal,projectVal);  
     reInputDialog.close();
-    // reInputForm.reset();
-    // curView = projectVal;
-    // renderByCurView();
+    reInputForm.reset();
+
+    state.modifyToDo(todoID,titleVal,descVal,dateVal,priorityVal,projectVal);      
+    curView = projectVal;
+    renderByCurView();
         
   });
 

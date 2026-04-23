@@ -43,11 +43,11 @@ function modifyToDo(id, title, desc, date, priority, project) {
   const newPriority = priority;
   const newProject = project;
 
-  targetToDo.changeTitle(newTitle);
-  targetToDo.changeDesc(newDesc);
-  targetToDo.changeDate(newDate);
-  targetToDo.changePriority(newPriority);
-  targetToDo.changeProject(newProject);  
+  targetToDo.title = newTitle;
+  targetToDo.desc = newDesc;
+  targetToDo.date = newDate;
+  targetToDo.priority = newPriority;
+  targetToDo.project = newProject;  
 
   storage.saveToLocalStorage(toDos, 'localToDos');
 }
