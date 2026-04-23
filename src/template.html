@@ -8,13 +8,18 @@
 </head>
 
 <body>
-  <div class="buttons">
-    <button id="addButton" command="show-modal" commandfor="inputToDo">Add to do</button>
-    <button id="addProject" command="show-modal" commandfor="inputProject">Add Project</button>
-    <button id="showAllToDos">All ToDos</button>
-  </div>
+
   <div class="mainUI">
-    <div class="nav">      
+    <div class="headerContainer">
+      <span>To-Do List App</span>
+      <button onclick="window.close()">✖</button>
+    </div>
+    <div class="buttons">
+      <button id="addButton" command="show-modal" commandfor="inputToDo">New Task</button>
+      <button id="addProject" command="show-modal" commandfor="inputProject">New Project</button>
+      <button id="showAllToDos">All Tasks</button>
+    </div>    
+    <div class="nav">
     </div>
     <div class="toDosContainer">
       <!-- <div class="todo" data-id="1232">
@@ -41,9 +46,9 @@
       <input type="text" id="tdDesc" name="tdDesc"><br>
 
 
-      <label for="tdProject">Project:</label>      
-      <select id="tdProject" name="tdProject">  
-        <option value="Home">Home</option>      
+      <label for="tdProject">Project:</label>
+      <select id="tdProject" name="tdProject">
+        <option value="Home">Home</option>
       </select><br>
 
 
@@ -65,7 +70,7 @@
     <form id="projectForm" method="dialog">
       <label for="pjTitle">Title:</label><br>
       <input type="text" id="pjTitle" name="pjTitle" required><br>
-      <label for="pjColor">Color:</label><br>      
+      <label for="pjColor">Color:</label><br>
       <select id="pjColor" name="pjColor">
         <option value="red">Red</option>
         <option value="blue">Blue</option>
@@ -82,14 +87,14 @@
   <dialog id="reInputToDo">
     <form id="reInputForm" method="dialog">
       <label for="tdTitle2">Title:</label><br>
-      <input type="text" id="tdTitle2" name="tdTitle2" ><br>
+      <input type="text" id="tdTitle2" name="tdTitle2"><br>
       <label for="tdDesc2">Description:</label><br>
       <input type="text" id="tdDesc2" name="tdDesc2"><br>
 
 
-      <label for="tdProject2">Project:</label>      
-      <select id="tdProject2" name="tdProject2">  
-        <option value="Home">Home</option>      
+      <label for="tdProject2">Project:</label>
+      <select id="tdProject2" name="tdProject2">
+        <option value="Home">Home</option>
       </select><br>
 
 

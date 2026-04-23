@@ -93,7 +93,7 @@ function initButtons() {
   //show all todos
   showAllButton.addEventListener('click', () => {
     const openProjectButtons = document.querySelectorAll('.openProject');
-    openProjectButtons.forEach(pbutton => {pbutton.textContent = '🗀'});
+    openProjectButtons.forEach(pbutton => {pbutton.textContent = '📁'});
 
     renderToDos(state.getCurToDos());
     curView = 'all';
@@ -142,12 +142,12 @@ function renderProjects(projectsArr) {
   let projects = projectsArr;
 
   projects.forEach((newProject) => {
-    const deleteBtn = newProject.protected === true ? '' : `<button class="delProject">🗑</button>`;
+    const deleteBtn = newProject.protected === true ? '' : `<button class="delProject">🗑️</button>`;
 
     const newContainer = `
       <div class="project" data-idpj="${newProject.id}">
         <div class="pjNameUI">
-          <button class="openProject">🗀</button>
+          <button class="openProject">📁</button>
           <h3 class="nameProject">${newProject.name}</h3>
         </div>
         <div>          
@@ -195,8 +195,8 @@ function initOpenProjectButtons() {
       renderToDos(filtered);
       curView = targetName;
       
-      openProjectButtons.forEach(pbutton => {pbutton.textContent = '🗀'});
-      button.textContent = '🗁';
+      openProjectButtons.forEach(pbutton => {pbutton.textContent = '📁'});
+      button.textContent = '📂';
     });
   });
 }
