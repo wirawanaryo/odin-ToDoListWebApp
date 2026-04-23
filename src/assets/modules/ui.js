@@ -198,15 +198,22 @@ function initEditToDoButtons() {
   let todoID;
   const reInputDialog = document.getElementById('reInputToDo')
   const editButtons = document.querySelectorAll('.editButton');
+  const reInputForm = document.getElementById('reInputForm');
   editButtons.forEach(editButton => {
     editButton.addEventListener('click', () => {
       todoID = event.target.closest('.todo').dataset.id;
       reInputDialog.showModal();
-      console.log(todoID);
+      // console.log(state.findToDobyID(todoID));
+
+      const targetToDo = state.findToDobyID(todoID);
+      document.getElementById('tdTitle2').value = targetToDo.title;
+      document.getElementById('tdDesc2').value = targetToDo.desc;
+      document.getElementById('tdDate2').value = targetToDo.date;
+      document.getElementById('tdPriority2').value = targetToDo.priority;
+      document.getElementById('tdProject2').value = targetToDo.project;
     });
   });
 
-  const reInputForm = document.getElementById('reInputForm');
   reInputForm.addEventListener('submit', () => {
     event.preventDefault();
 
