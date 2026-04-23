@@ -65,8 +65,15 @@
     <form id="projectForm" method="dialog">
       <label for="pjTitle">Title:</label><br>
       <input type="text" id="pjTitle" name="pjTitle" required><br>
-      <label for="pjColor">Color:</label><br>
-      <input type="text" id="pjColor" name="pjColor"><br>
+      <label for="pjColor">Color:</label><br>      
+      <select id="pjColor" name="pjColor">
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="yellow">Yellow</option>
+        <option value="green">Green</option>
+        <option value="purple">Purple</option>
+        <option value="orange">Orange</option>
+      </select><br>
     </form><br>
     <button id="pjAddProject" type="submit" form="projectForm">Add Project</button>
     <button commandfor="inputProject" command="close">Cancel</button>

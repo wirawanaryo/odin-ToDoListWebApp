@@ -92,6 +92,9 @@ function initButtons() {
 
   //show all todos
   showAllButton.addEventListener('click', () => {
+    const openProjectButtons = document.querySelectorAll('.openProject');
+    openProjectButtons.forEach(pbutton => {pbutton.textContent = '🗀'});
+
     renderToDos(state.getCurToDos());
     curView = 'all';
     console.log(`current view: ${curView}`);
@@ -143,9 +146,11 @@ function renderProjects(projectsArr) {
 
     const newContainer = `
       <div class="project" data-idpj="${newProject.id}">
-        <h3 class="nameProject">${newProject.name}</h3>
-        <div>
-          <button class="openProject">👁</button>
+        <div class="pjNameUI">
+          <button class="openProject">🗀</button>
+          <h3 class="nameProject">${newProject.name}</h3>
+        </div>
+        <div>          
           ${deleteBtn}
         </div>
       </div>
@@ -189,7 +194,9 @@ function initOpenProjectButtons() {
       const filtered = state.filterTodos('project', targetName);
       renderToDos(filtered);
       curView = targetName;
-      console.log(`current view: ${curView}`);
+      
+      openProjectButtons.forEach(pbutton => {pbutton.textContent = '🗀'});
+      button.textContent = '🗁';
     });
   });
 }

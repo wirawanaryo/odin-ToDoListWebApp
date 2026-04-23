@@ -45,6 +45,9 @@ body{
   background-color: white;
   padding:0.5vh 0.5vw 0.5vh 0.5vw;
 }
+.pjNameUI{
+  display: flex;
+}
 .nav{  
   padding: 4vh 0.5vw 1vh 0.5vw;
   
