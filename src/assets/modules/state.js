@@ -34,6 +34,12 @@ function filterTodos(property, condition) {
   return filtered;
 }
 
+function delAllTodoByProperty(property, condition) {
+  const filtered = toDos.filter(toDo => toDo[property] != condition);
+  storage.saveToLocalStorage(filtered, 'localToDos');
+  toDos = filtered;  
+}
+
 function modifyToDo(id, title, desc, date, priority, project) {
   const targetToDo = toDos.find(todo => todo.id === id);
 
@@ -51,4 +57,4 @@ function modifyToDo(id, title, desc, date, priority, project) {
 
   storage.saveToLocalStorage(toDos, 'localToDos');
 }
-export { addToDo, delToDo, loadLocalToDos, getCurToDos, filterTodos, modifyToDo };
+export { addToDo, delToDo, loadLocalToDos, getCurToDos, filterTodos, modifyToDo, delAllTodoByProperty};

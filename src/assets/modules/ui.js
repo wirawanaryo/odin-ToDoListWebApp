@@ -116,10 +116,20 @@ function initDelProjectButtons() {
   delProjectButtons.forEach(delProjectButton => {
     delProjectButton.addEventListener('click', () => {
       const targetProject = event.target.closest('.project');
-      project.delProject(targetProject.dataset.idpj);
-      renderProjects(project.getProjects());
-      updateProjectSelector();
-      // console.log(targetProject.dataset.idpj);      
+      const projectName = targetProject.querySelector('.nameProject').textContent;
+
+      const confirmed = confirm(`Are you sure "? This will also remove all todos within.`);
+
+      if (confirmed) {
+        project.delProject(targetProject.dataset.idpj);
+        renderProjects(project.getProjects());
+        updateProjectSelector();
+
+        // delete todos inside      
+        state.delAllTodoByProperty('project', projectName);
+        curView = 'all';
+        renderByCurView();
+      }
     });
   });
 }
@@ -165,7 +175,7 @@ function updateProjectSelector() {
       wrapper.innerHTML = newOption;
       projectSelector.appendChild(wrapper.firstElementChild);
     });
-  });  
+  });
 }
 
 
@@ -199,21 +209,21 @@ function initEditToDoButtons() {
   const reInputForm = document.getElementById('reInputForm');
   reInputForm.addEventListener('submit', () => {
     event.preventDefault();
-    
+
     const titleVal = document.getElementById('tdTitle2').value;
     const descVal = document.getElementById('tdDesc2').value;
     const dateVal = document.getElementById('tdDate2').value;
-    const priorityVal = document.getElementById('tdPriority2').value;    
+    const priorityVal = document.getElementById('tdPriority2').value;
     const projectVal = document.getElementById('tdProject2').value;
 
     console.log(todoID);
     reInputDialog.close();
     reInputForm.reset();
 
-    state.modifyToDo(todoID,titleVal,descVal,dateVal,priorityVal,projectVal);      
+    state.modifyToDo(todoID, titleVal, descVal, dateVal, priorityVal, projectVal);
     curView = projectVal;
     renderByCurView();
-        
+
   });
 
 }
