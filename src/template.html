@@ -18,7 +18,7 @@
       <button id="addButton" command="show-modal" commandfor="inputToDo">New Task</button>
       <button id="addProject" command="show-modal" commandfor="inputProject">New Project</button>
       <button id="showAllToDos">All Tasks</button>
-    </div>    
+    </div>
     <div class="nav">
     </div>
     <div class="toDosContainer">
@@ -39,38 +39,45 @@
   </div>
 
   <dialog id="inputToDo">
+    <div class="dialogHeader">Input Task Details</div>
     <form id="inputForm" method="dialog">
-      <label for="tdTitle">Title:</label><br>
-      <input type="text" id="tdTitle" name="tdTitle" required><br>
-      <label for="tdDesc">Description:</label><br>
-      <input type="text" id="tdDesc" name="tdDesc"><br>
+      <label for="tdTitle">Title:</label>
+      <input type="text" id="tdTitle" name="tdTitle" required>
+      <label for="tdDesc">Description:</label>
+      <textarea id="tdDesc" name="tdDesc" rows="4"></textarea>
 
 
       <label for="tdProject">Project:</label>
       <select id="tdProject" name="tdProject">
         <option value="Home">Home</option>
-      </select><br>
+      </select>
 
 
-      <label for="tdDate">Deadline:</label><br>
-      <input type="date" id="tdDate" name="tdDate"><br>
+      <label for="tdDate">Deadline:</label>
+      <input type="date" id="tdDate" name="tdDate">
 
       <label for="tdPriority">Priority:</label>
       <select id="tdPriority" name="tdPriority">
         <option value="High">High</option>
         <option value="Medium">Medium</option>
         <option value="Low">Low</option>
-      </select><br>
+      </select>
     </form>
-    <button id="tdAddTask" type="submit" form="inputForm">Add Task</button>
-    <button commandfor="inputToDo" command="close">Cancel</button>
+    <div>
+    </div>
+    <div class="dialogButtons">
+      <button id="tdAddTask" type="submit" form="inputForm">Add Task</button>
+      <button commandfor="inputToDo" onclick="document.getElementById('inputToDo').close()">Cancel</button>
+    </div>
+
   </dialog>
 
   <dialog id="inputProject">
+    <div class="dialogHeader">Input Project Details</div>
     <form id="projectForm" method="dialog">
-      <label for="pjTitle">Title:</label><br>
-      <input type="text" id="pjTitle" name="pjTitle" required><br>
-      <label for="pjColor">Color:</label><br>
+      <label for="pjTitle">Title:</label>
+      <input type="text" id="pjTitle" name="pjTitle" required>
+      <label for="pjColor">Color:</label>
       <select id="pjColor" name="pjColor">
         <option value="red">Red</option>
         <option value="blue">Blue</option>
@@ -78,38 +85,41 @@
         <option value="green">Green</option>
         <option value="purple">Purple</option>
         <option value="orange">Orange</option>
-      </select><br>
-    </form><br>
-    <button id="pjAddProject" type="submit" form="projectForm">Add Project</button>
-    <button commandfor="inputProject" command="close">Cancel</button>
+      </select>
+    </form>
+    <div class="dialogButtons">
+      <button id="pjAddProject" type="submit" form="projectForm">Add Project</button>
+      <button commandfor="inputProject" command="close">Cancel</button>
+    </div>
   </dialog>
 
   <dialog id="reInputToDo">
+    <div class="dialogHeader">Edit Project Details</div>
     <form id="reInputForm" method="dialog">
-      <label for="tdTitle2">Title:</label><br>
-      <input type="text" id="tdTitle2" name="tdTitle2"><br>
-      <label for="tdDesc2">Description:</label><br>
-      <input type="text" id="tdDesc2" name="tdDesc2"><br>
-
+      <label for="tdTitle2">Title:</label>
+      <input type="text" id="tdTitle2" name="tdTitle2">
+      <label for="tdDesc2">Description:</label>
+      <textarea id="tdDesc2" name="tdDesc2" rows="4"></textarea>      
 
       <label for="tdProject2">Project:</label>
       <select id="tdProject2" name="tdProject2">
         <option value="Home">Home</option>
-      </select><br>
+      </select>
 
-
-      <label for="tdDate2">Deadline:</label><br>
-      <input type="date" id="tdDate2" name="tdDate2"><br>
+      <label for="tdDate2">Deadline:</label>
+      <input type="date" id="tdDate2" name="tdDate2">
 
       <label for="tdPriority2">Priority:</label>
       <select id="tdPriority2" name="tdPriority2">
         <option value="High">High</option>
         <option value="Medium">Medium</option>
         <option value="Low">Low</option>
-      </select><br>
+      </select>
     </form>
-    <button id="tdreInput" type="submit" form="reInputForm">Save Edit</button>
-    <button commandfor="reInputToDo" command="close">Cancel</button>
+    <div class="dialogButtons">
+      <button id="tdreInput" type="submit" form="reInputForm">Save Edit</button>
+      <button commandfor="reInputToDo" command="close">Cancel</button>
+    </div>
   </dialog>
 </body>
 
