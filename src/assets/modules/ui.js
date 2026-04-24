@@ -35,6 +35,8 @@ function renderToDos(toDosArr) {
       <div class="todoHeader">
           <h1>${newToDo.title}</h1>
           <div class="todosButtons">
+            <input type="checkbox" id="checkDone" name="checkDone" value="done">
+            <label for="checkDone"> Done</label>
             <button class="delButton">Delete</button>
             <button class="editButton" command="show-modal" commandfor="reInputTodo">Edit</button>
           </div>          
@@ -96,11 +98,11 @@ function initButtons() {
   //show all todos
   showAllButton.addEventListener('click', () => {
     const openProjectButtons = document.querySelectorAll('.openProject');
-    openProjectButtons.forEach(pbutton => {pbutton.textContent = '📁'});
+    openProjectButtons.forEach(pbutton => { pbutton.textContent = '📁' });
 
     renderToDos(state.getCurToDos());
     curView = 'all';
-    console.log(`current view: ${curView}`);
+    console.log(state.getCurToDos());
   });
 
 
@@ -122,7 +124,7 @@ function initButtons() {
     // currentEditID = ''; 
     // todo.createToDo(titleVal, descVal, dateVal, priorityVal, projectVal);
     state.modifyToDo(currentEditID, titleVal, descVal, dateVal, priorityVal, projectVal);
-    currentEditID = ''; 
+    currentEditID = '';
     curView = projectVal;
     renderByCurView();
   });
@@ -221,16 +223,16 @@ function initOpenProjectButtons() {
       const filtered = state.filterTodos('project', targetName);
       renderToDos(filtered);
       curView = targetName;
-      
-      openProjectButtons.forEach(pbutton => {pbutton.textContent = '📁'});
+
+      openProjectButtons.forEach(pbutton => { pbutton.textContent = '📁' });
       button.textContent = '📂';
     });
   });
 }
 
 let currentEditID;
-function initEditToDoButtons() {    
-  const editButtons = document.querySelectorAll('.editButton');  
+function initEditToDoButtons() {
+  const editButtons = document.querySelectorAll('.editButton');
   editButtons.forEach(editButton => {
     editButton.addEventListener('click', () => {
       currentEditID = event.target.closest('.todo').dataset.id;
@@ -244,7 +246,7 @@ function initEditToDoButtons() {
       document.getElementById('tdPriority2').value = targetToDo.priority;
       document.getElementById('tdProject2').value = targetToDo.project;
     });
-  });  
+  });
 }
 
 export { initButtons, renderToDos, renderProjects, updateProjectSelector };

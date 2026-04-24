@@ -109,9 +109,21 @@ button{
   flex-direction: column;
   width: minmax(550px, 100%);
 }
+.todosButtons{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .todoHeader{
   display: flex;
-  align-items: flex-start;
+  align-items: flex-start; 
+  justify-content: space-between;   
+}
+#checkDone+label{
+  font-size: larger;
+  font-family: 'system';
+  margin-right: 10px;
+  margin-top: 2px;
 }
 .todoHeader>h1{  
   width: 320px;  
@@ -124,10 +136,6 @@ button{
 }
 .labelTodo, .labelTodo+span{
   font-family: 'system';
-}
-.todoHeader {
-  display: flex;
-  justify-content: space-between;
 }
 hr{
   height: 0.1rem;
