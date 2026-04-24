@@ -11,6 +11,8 @@ const pjContainer = document.querySelector('.nav');
 const addProjectButton = document.getElementById('pjAddProject');
 const projectForm = document.getElementById('projectForm');
 const projectDialog = document.getElementById('inputProject');
+const reInputDialog = document.getElementById('reInputToDo');
+const reInputForm = document.getElementById('reInputForm');
 
 let curView = 'all';
 
@@ -98,6 +100,29 @@ function initButtons() {
     renderToDos(state.getCurToDos());
     curView = 'all';
     console.log(`current view: ${curView}`);
+  });
+
+
+  //reinputform  
+  reInputForm.addEventListener('submit', () => {
+    event.preventDefault();
+
+    const titleVal = document.getElementById('tdTitle2').value;
+    const descVal = document.getElementById('tdDesc2').value;
+    const dateVal = document.getElementById('tdDate2').value;
+    const priorityVal = document.getElementById('tdPriority2').value;
+    const projectVal = document.getElementById('tdProject2').value;
+
+    // console.log([titleVal, descVal, dateVal, priorityVal, projectVal]);
+    reInputDialog.close();
+    reInputForm.reset();
+
+    state.delToDo(currentEditID);
+    currentEditID = ''; 
+    todo.createToDo(titleVal, descVal, dateVal, priorityVal, projectVal);
+    // state.modifyToDo(todoID, titleVal, descVal, dateVal, priorityVal, projectVal);
+    curView = projectVal;
+    renderByCurView();
   });
 };
 
@@ -201,45 +226,23 @@ function initOpenProjectButtons() {
   });
 }
 
-function initEditToDoButtons() {
-  let todoID;
-  const reInputDialog = document.getElementById('reInputToDo')
-  const editButtons = document.querySelectorAll('.editButton');
-  const reInputForm = document.getElementById('reInputForm');
+let currentEditID;
+function initEditToDoButtons() {    
+  const editButtons = document.querySelectorAll('.editButton');  
   editButtons.forEach(editButton => {
     editButton.addEventListener('click', () => {
-      todoID = event.target.closest('.todo').dataset.id;
+      currentEditID = event.target.closest('.todo').dataset.id;
       reInputDialog.showModal();
-      // console.log(state.findToDobyID(todoID));
+      console.log(state.findToDobyID(currentEditID));
 
-      const targetToDo = state.findToDobyID(todoID);
+      const targetToDo = state.findToDobyID(currentEditID);
       document.getElementById('tdTitle2').value = targetToDo.title;
       document.getElementById('tdDesc2').value = targetToDo.desc;
       document.getElementById('tdDate2').value = targetToDo.date;
       document.getElementById('tdPriority2').value = targetToDo.priority;
       document.getElementById('tdProject2').value = targetToDo.project;
     });
-  });
-
-  reInputForm.addEventListener('submit', () => {
-    event.preventDefault();
-
-    const titleVal = document.getElementById('tdTitle2').value;
-    const descVal = document.getElementById('tdDesc2').value;
-    const dateVal = document.getElementById('tdDate2').value;
-    const priorityVal = document.getElementById('tdPriority2').value;
-    const projectVal = document.getElementById('tdProject2').value;
-
-    console.log(todoID);
-    reInputDialog.close();
-    reInputForm.reset();
-
-    state.modifyToDo(todoID, titleVal, descVal, dateVal, priorityVal, projectVal);
-    curView = projectVal;
-    renderByCurView();
-
-  });
-
+  });  
 }
 
 export { initButtons, renderToDos, renderProjects, updateProjectSelector };

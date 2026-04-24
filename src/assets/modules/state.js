@@ -48,9 +48,9 @@ function findToDobyID(id) {
 function modifyToDo(id, title, desc, date, priority, project) {
   const targetToDo = toDos.find(todo => todo.id === id);
 
-  const newTitle = (title === '') ? targetToDo.title : title;
-  const newDesc = (desc === '') ? targetToDo.desc : desc;
-  const newDate = (date === '') ? targetToDo.date : date;
+  const newTitle = title;
+  const newDesc = desc;
+  const newDate = date;
   const newPriority = priority;
   const newProject = project;
 
@@ -61,5 +61,6 @@ function modifyToDo(id, title, desc, date, priority, project) {
   targetToDo.project = newProject;  
 
   storage.saveToLocalStorage(toDos, 'localToDos');
+  window.location.reload();
 }
 export { addToDo, delToDo, loadLocalToDos, getCurToDos, filterTodos, modifyToDo, delAllTodoByProperty, findToDobyID};
