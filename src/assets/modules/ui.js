@@ -37,13 +37,14 @@ function renderToDos(toDosArr) {
           <div class="todosButtons">
             <button class="delButton">Delete</button>
             <button class="editButton" command="show-modal" commandfor="reInputTodo">Edit</button>
-          </div>
+          </div>          
       </div>
+      <hr>
       <div class="todoContent">        
-        <p>${newToDo.desc}</p>
-        <span>Priority: ${newToDo.priority}</span><br>    
-        <span>Deadline: ${newToDo.date}</span><br>
-        <span>Project: ${newToDo.project}</span>       
+        <p>${newToDo.desc}</p><br>
+        <span class='labelTodo'>Priority</span><span>: ${newToDo.priority}</span><br>    
+        <span class='labelTodo'>Deadline</span><span>: ${newToDo.date}</span><br>
+        <span class='labelTodo'>Project</span><span>: ${newToDo.project}</span>       
       </div>      
     </div>
     `;
@@ -117,10 +118,11 @@ function initButtons() {
     reInputDialog.close();
     reInputForm.reset();
 
-    state.delToDo(currentEditID);
+    // state.delToDo(currentEditID);
+    // currentEditID = ''; 
+    // todo.createToDo(titleVal, descVal, dateVal, priorityVal, projectVal);
+    state.modifyToDo(currentEditID, titleVal, descVal, dateVal, priorityVal, projectVal);
     currentEditID = ''; 
-    todo.createToDo(titleVal, descVal, dateVal, priorityVal, projectVal);
-    // state.modifyToDo(todoID, titleVal, descVal, dateVal, priorityVal, projectVal);
     curView = projectVal;
     renderByCurView();
   });
@@ -170,7 +172,7 @@ function renderProjects(projectsArr) {
     const deleteBtn = newProject.protected === true ? '' : `<button class="delProject">🗑️</button>`;
 
     const newContainer = `
-      <div class="project" data-idpj="${newProject.id}">
+      <div class="project ${newProject.color}" data-idpj="${newProject.id}">
         <div class="pjNameUI">
           <button class="openProject">📁</button>
           <h3 class="nameProject">${newProject.name}</h3>

@@ -60,7 +60,6 @@ function modifyToDo(id, title, desc, date, priority, project) {
   targetToDo.priority = newPriority;
   targetToDo.project = newProject;  
 
-  storage.saveToLocalStorage(toDos, 'localToDos');
-  window.location.reload();
+  storage.saveToLocalStorage(toDos, 'localToDos');  
 }
 export { addToDo, delToDo, loadLocalToDos, getCurToDos, filterTodos, modifyToDo, delAllTodoByProperty, findToDobyID};
