@@ -31,11 +31,11 @@ function renderToDos(toDosArr) {
 
   toDos.forEach((newToDo) => {
     const newContainer = `
-    <div class="todo ${newToDo.priority}" data-id="${newToDo.id}">
+    <div class="todo ${newToDo.priority} ${newToDo.done ? "done" : ""}" data-id="${newToDo.id}">
       <div class="todoHeader">
           <h1>${newToDo.title}</h1>
           <div class="todosButtons">
-            <input type="checkbox" id="checkDone" name="checkDone" value="done">
+            <input type="checkbox" id='checkDone' class="checkDone" ${newToDo.done ? "checked" : ""}>
             <label for="checkDone"> Done</label>
             <button class="delButton">Delete</button>
             <button class="editButton" command="show-modal" commandfor="reInputTodo">Edit</button>
@@ -58,6 +58,7 @@ function renderToDos(toDosArr) {
 
   initDelButtons();
   initEditToDoButtons();
+  initCheckDoneBox();
 }
 
 const showAllButton = document.getElementById('showAllToDos');
@@ -249,4 +250,15 @@ function initEditToDoButtons() {
   });
 }
 
+function initCheckDoneBox() {
+  const doneCheckboxes = document.querySelectorAll('.checkDone');
+  doneCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', ()=>{
+      const id = event.target.closest('.todo').dataset.id;
+      const toDo = state.findToDobyID(id);
+      state.modifyDoneCheck(id,checkbox.checked);
+      console.log(toDo);
+    });
+  });
+}
 export { initButtons, renderToDos, renderProjects, updateProjectSelector };

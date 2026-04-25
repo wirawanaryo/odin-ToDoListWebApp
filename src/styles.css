@@ -119,10 +119,10 @@ button{
   align-items: flex-start; 
   justify-content: space-between;   
 }
-#checkDone{
+.checkDone{
   transform: scale(1.5);
 }
-#checkDone+label{
+.checkDone+label{
   font-size: larger;
   font-family: 'system';
   margin-right: 10px;

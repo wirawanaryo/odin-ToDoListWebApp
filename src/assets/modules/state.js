@@ -62,4 +62,10 @@ function modifyToDo(id, title, desc, date, priority, project) {
 
   storage.saveToLocalStorage(toDos, 'localToDos');  
 }
-export { addToDo, delToDo, loadLocalToDos, getCurToDos, filterTodos, modifyToDo, delAllTodoByProperty, findToDobyID};
+
+function modifyDoneCheck(id, status) {
+  const targetToDo = toDos.find(todo => todo.id === id);
+  targetToDo.done = status;
+  storage.saveToLocalStorage(toDos, 'localToDos');  
+}
+export { addToDo, delToDo, loadLocalToDos, getCurToDos, filterTodos, modifyToDo, delAllTodoByProperty, findToDobyID, modifyDoneCheck};
