@@ -113,12 +113,13 @@ button{
 .todo.done::after{
   content: "COMPLETED!"; 
   position: absolute;
+  top: -5%;
   transform: translate(0%, 15%) rotate(-10deg);
 
   font-family: 'system';
   color: rgba(255, 0, 0, 0.5);
   font-weight: bold;
-  font-size: 5.7rem;
+  font-size: 6vw;
   pointer-events: none;
   z-index: 10;
 }
