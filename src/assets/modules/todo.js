@@ -8,6 +8,7 @@ class toDo {
     this.date = date;
     this.priority = priority;
     this.project = project;
+    this.done = false;
   }   
 
   // changeTitle(newTitle){this.title = newTitle;}
