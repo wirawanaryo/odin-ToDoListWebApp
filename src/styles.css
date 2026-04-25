@@ -103,11 +103,24 @@ button{
 
 .todo {
   margin: 1rem;
+  position:relative;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   width: minmax(550px, 100%);
+}
+.todo.done::after{
+  content: "COMPLETED!"; 
+  position: absolute;
+  transform: translate(0%, 15%) rotate(-10deg);
+
+  font-family: 'system';
+  color: rgba(255, 0, 0, 0.5);
+  font-weight: bold;
+  font-size: 5.7rem;
+  pointer-events: none;
+  z-index: 10;
 }
 .todosButtons{
   display: flex;

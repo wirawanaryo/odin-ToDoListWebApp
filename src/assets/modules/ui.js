@@ -257,7 +257,7 @@ function initCheckDoneBox() {
       const id = event.target.closest('.todo').dataset.id;
       const toDo = state.findToDobyID(id);
       state.modifyDoneCheck(id,checkbox.checked);
-      console.log(toDo);
+      renderByCurView();
     });
   });
 }
